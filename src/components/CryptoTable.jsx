@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, useCallback, useMemo } from 'react';
 
 const tabs = ['Tradable', 'Top gainers', 'New on Coinbase'];
 const POLL_MS = 3000;
@@ -75,18 +75,22 @@ const ArrowUp = () => (
 ── */
 const AnimatedPrice = ({ value, dir }) => {
 	const prevRef = useRef(value);
-	const prevValue = prevRef.current;
 
 	// Update after paint so next render gets current as "previous"
 	useLayoutEffect(() => {
 		prevRef.current = value;
 	});
 
-	const chars = value.split('');
-	// Right-align: pad the shorter string on the left so digit positions line up
-	const maxLen = Math.max(chars.length, prevValue.length);
-	const paddedNew  = value.padStart(maxLen, ' ').split('');
-	const paddedPrev = prevValue.padStart(maxLen, ' ').split('');
+	const { paddedNew, paddedPrev } = useMemo(() => {
+		const prevValue = prevRef.current;
+		const chars = value.split('');
+		// Right-align: pad the shorter string on the left so digit positions line up
+		const maxLen = Math.max(chars.length, prevValue.length);
+		return {
+			paddedNew: value.padStart(maxLen, ' ').split(''),
+			paddedPrev: prevValue.padStart(maxLen, ' ').split(''),
+		};
+	}, [value]);
 
 	return (
 		<span className="inline-flex tabular-nums text-base leading-[1em] font-normal text-white">

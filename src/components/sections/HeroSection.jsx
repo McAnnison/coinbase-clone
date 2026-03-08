@@ -43,7 +43,7 @@ const HeroSection = () => {
 								/>
 							</picture>
 						</div>
-						<p className="text-legal text-gray-60 mt-3 max-w-[900px]">
+						<p className="text-legal text-gray-60 mt-3 max-w-225">
 							Stocks and prediction markets not available in your jurisdiction.
 						</p>
 					</div>
