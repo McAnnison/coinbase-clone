@@ -90,7 +90,7 @@ const AnimatedPrice = ({ value, dir }) => {
 			paddedNew: value.padStart(maxLen, ' ').split(''),
 			paddedPrev: prevValue.padStart(maxLen, ' ').split(''),
 		};
-	}, [value]);
+	}, [value, prevRef]);
 
 	return (
 		<span className="inline-flex tabular-nums text-base leading-[1em] font-normal text-white">

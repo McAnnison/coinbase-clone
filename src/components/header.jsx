@@ -190,7 +190,7 @@ const DropdownContent = ({ menuKey }) => {
 	const hasSectionHeaders = menu.cols.length > 0 && menu.cols[0]?.header !== undefined;
 
 	return (
-		<div className="w-full max-w-[1228px] mx-auto px-8 lg:px-12 py-8">
+		<div className="w-full max-w-307 mx-auto px-8 lg:px-12 py-8">
 			<div className="flex gap-12">
 				{/* Two item columns */}
 				<div className="flex gap-12 flex-1">
