@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/fcRde9Vj)
 # Coinbase Clone - React & Tailwind CSS Assignment
 
@@ -98,3 +99,7 @@ Visit [coinbase.com](https://www.coinbase.com/)
 ## 🌐 Deployment on Netlify
 
 You must deploy your completed project on **Netlify**.
+=======
+# coinbase-clone
+This is a clone of coinbase.com
+>>>>>>> 8d4be317f5c41e63787b889ebfa0de6c54de6588
