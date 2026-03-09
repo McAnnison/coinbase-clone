@@ -49,7 +49,7 @@ const HeroSection = () => {
 					</div>
 
 					{/* Right: CTA — 50% on desktop */}
-					<div className="w-full md:w-1/2 md:flex-[0_0_50%] order-first md:order-none">
+					<div className="w-full md:w-1/2 md:flex-[0_0_50%] order-first md:order">
 						<h1 className="text-5xl md:text-display-1 text-gray-100 mb-4">
 							The future of finance is here.
 						</h1>
