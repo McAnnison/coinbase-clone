@@ -10,22 +10,19 @@ const VerifyCode = () => {
 
 	const [code, setCode] = useState(['', '', '', '', '', '']);
 	const [timer, setTimer] = useState(RESEND_SECONDS);
-	const [canResend, setCanResend] = useState(false);
+	const canResend = timer <= 0;
 	const inputRefs = useRef([]);
 
 	// Countdown timer
 	useEffect(() => {
-		if (timer <= 0) {
-			setCanResend(true);
-			return;
-		}
+		if (timer <= 0) return;
+
 		const id = setInterval(() => setTimer((t) => t - 1), 1000);
 		return () => clearInterval(id);
 	}, [timer]);
 
 	const handleResend = () => {
 		setTimer(RESEND_SECONDS);
-		setCanResend(false);
 	};
 
 	const focusInput = useCallback((index) => {
@@ -65,17 +62,17 @@ const VerifyCode = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#0A0B0D] flex flex-col">
+		<div className="min-h-screen bg-gray-100 flex flex-col">
 			{/* Top bar with logo */}
 			<div className="px-6 pt-5">
-				<a href="/">
+				<a href="/" aria-label="Coinbase Home">
 					<Logo height={28} className="brightness-0 invert" />
 				</a>
 			</div>
 
 			{/* Centered content */}
 			<div className="flex-1 flex items-center justify-center px-4">
-				<div className="w-full max-w-[390px]">
+				<div className="w-full max-w-97.5">
 					<h1 className="text-[1.75rem] font-bold text-white mb-2">
 						Enter the code we emailed you
 					</h1>
@@ -102,10 +99,10 @@ const VerifyCode = () => {
 								onPaste={i === 0 ? handlePaste : undefined}
 								className={`
 									w-12 h-14 text-center text-xl font-semibold
-									rounded-xl border bg-[#1E2025] text-white
+									rounded-xl border bg-gray-90 text-white
 									outline-none transition-colors
-									${digit ? 'border-[#0052FF]' : 'border-[#2C2F36]'}
-									focus:border-[#0052FF]
+									${digit ? 'border-blue-60' : 'border-[#2C2F36]'}
+									focus:border-blue-60
 								`}
 							/>
 						))}
@@ -120,7 +117,7 @@ const VerifyCode = () => {
 							transition-colors mb-6
 							${canResend
 								? 'bg-[#5B8DEF] hover:bg-[#4A7DE0] text-white cursor-pointer'
-								: 'bg-[#1E2025] text-[#5B616E] cursor-not-allowed'
+								: 'bg-gray-90 text-gray-60 cursor-not-allowed'
 							}
 						`}
 					>
@@ -130,7 +127,7 @@ const VerifyCode = () => {
 					{/* 2FA link */}
 					<p className="text-center text-[0.875rem] text-white">
 						Can&apos;t access?{' '}
-						<Link to="#" className="text-[#0052FF] hover:underline font-medium">
+						<Link to="#" className="text-blue-60 hover:underline font-medium">
 							Update your 2FA
 						</Link>
 					</p>
